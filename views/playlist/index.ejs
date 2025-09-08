@@ -15,15 +15,15 @@
           <% playlists.forEach((list) => { %>
             <li>
               <%= list.name %>
-              <a href="/users/<%= user._id %>/playlists/<%= item._id %>/edit">Edit Playlist</a>
-              <form action="/users/<%= user._id %>/playlists/<%= item._id %>?_method=DELETE" method="POST">
+              <a href="/users/<%= user._id %>/playlists/<%= list._id %>/edit">Edit Playlist</a>
+              <form action="/users/<%= user._id %>/playlists/<%= list._id %>?_method=DELETE" method="POST">
                 <button type="submit">Delete Playlist</button>
               </form>
             </li>          
           <% }) %>
         </ul>
     <% } else { %>
-      <p>There are no songs in this playlist.</p>
+      <p>There are no playlists.</p>
     <% } %>
 
   </body>
