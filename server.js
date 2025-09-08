@@ -8,6 +8,7 @@ const morgan = require('morgan')
 const session = require('express-session')
 
 const authController = require('./controllers/auth.js')
+const playlistController = require('./controllers/playlist.js')
 
 const port = process.env.PORT
 
@@ -35,6 +36,7 @@ app.get('/', (req, res) => {
 })
 
 app.use('/auth', authController)
+app.use('/playlists', playlistController)
 
 app.listen(port, () => {
     console.log(`The express app is ready on port ${port}`)

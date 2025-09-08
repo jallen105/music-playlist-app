@@ -9,7 +9,7 @@ router.get('/sign-up', (req, res) => {
 })
 
 router.get('/sign-in', (req, res) => {
-    res.render('../models/sign-in.ejs')
+    res.render('auth/sign-in.ejs')
 })
 
 router.get('/sign-out', (req, res) => {
