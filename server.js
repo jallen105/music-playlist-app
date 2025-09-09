@@ -42,8 +42,9 @@ app.get('/', (req, res) => {
     })
 })
 
-app.use('/community', communityController)
+
 app.use('/auth', authController)
+app.use('/community', communityController)
 app.use(isSignedIn)
 app.use('/users/:userId/playlists', playlistController)
 app.use('/users/:userId/playlists/:playlistId/song', songController)
