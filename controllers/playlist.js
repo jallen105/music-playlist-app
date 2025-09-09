@@ -29,23 +29,6 @@ router.get('/new', (req, res) => {
 
 })
 
-router.get('/:playlistId/song/new', async (req, res) => {
-
-    try {
-
-        const currentPlaylist = await Playlist.findById(req.params.playlistId)
-        res.render('song/new.ejs', {
-            playlist: currentPlaylist
-        })
-
-    } catch (err) {
-
-        console.log(err)
-        res.redirect('/')
-
-    }
-})
-
 router.get('/:playlistId/edit', async (req, res) => {
 
     try {
@@ -54,28 +37,6 @@ router.get('/:playlistId/edit', async (req, res) => {
 
         res.render('playlist/edit.ejs', {
             playlist: currentPlaylist,
-        })
-
-    } catch (err) {
-
-        console.log(err)
-        res.redirect('/')
-
-    }
-})
-
-router.get('/:playlistId/song/:songId/edit', async (req, res) => {
-
-    try {
-
-        const currentPlaylist = await Playlist.findById(req.params.playlistId)
-        const currentSong = currentPlaylist.songList.id(req.params.songId)
-
-        res.render('song/edit.ejs', {
-
-            playlist: currentPlaylist,
-            song: currentSong,
-
         })
 
     } catch (err) {
@@ -117,25 +78,6 @@ router.post('/', async (req, res) => {
     }
 })
 
-router.post('/:playlistId/song', async (req, res) => {
-
-    try {
-
-        const currentPlaylist = await Playlist.findById(req.params.playlistId)
-
-        currentPlaylist.songList.push(req.body)
-        await currentPlaylist.save()
-
-        res.redirect(`/users/${req.session.user._id}/playlists/${currentPlaylist._id}/edit`)
-
-    } catch (err) {
-
-        console.log(err)
-        res.redirect('/')
-
-    }
-})
-
 router.put('/:playlistId', async (req, res) => {
 
     try {
@@ -160,27 +102,6 @@ router.put('/:playlistId', async (req, res) => {
     }
 })
 
-router.put('/:playlistId/song/:songId', async (req, res) => {
-
-    try {
-
-        const currentPlaylist = await Playlist.findById(req.params.playlistId)
-        const currentSong = currentPlaylist.songList.id(req.params.songId)
-
-        currentSong.set(req.body)
-        await currentPlaylist.save()
-
-        res.redirect(`/users/${req.session.user._id}/playlists/${currentPlaylist._id}/edit`)
-
-    } catch (err) {
-
-        console.log(err)
-        res.redirect('/')
-
-    }
-})
-
-
 router.delete('/:playlistId', async (req, res) => {
 
     try {
@@ -194,32 +115,6 @@ router.delete('/:playlistId', async (req, res) => {
             res.send('You don\'t have permission to do that.')
         }
 
-    } catch (err) {
-
-        console.log(err)
-        res.redirect('/')
-
-    }
-})
-
-router.delete('/:playlistId/song/:songId', async (req, res) => {
-
-    try {
-
-        const currentPlaylist = await Playlist.findById(req.params.playlistId)
-
-        if (currentPlaylist.owner.equals(req.session.user._id)) {
-
-            currentPlaylist.songList.id(req.params.songId).deleteOne()
-            await currentPlaylist.save()
-
-            res.redirect(`/users/${req.session.user._id}/playlists/${currentPlaylist._id}/edit`)
-
-        } else {
-
-            res.send('You don\'t have permission to do that.')
-
-        }
     } catch (err) {
 
         console.log(err)

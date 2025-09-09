@@ -9,6 +9,7 @@ const session = require('express-session')
 
 const authController = require('./controllers/auth.js')
 const playlistController = require('./controllers/playlist.js')
+const songController = require('./controllers/song.js')
 
 const isSignedIn = require('./middleware/is-signed-in.js')
 const passUserToView = require('./middleware/pass-user-to-view.js')
@@ -43,6 +44,7 @@ app.get('/', (req, res) => {
 app.use('/auth', authController)
 app.use(isSignedIn)
 app.use('/users/:userId/playlists', playlistController)
+app.use('/users/:userId/playlists/:playlistId/song', songController)
 
 app.listen(port, () => {
     console.log(`The express app is ready on port ${port}`)
