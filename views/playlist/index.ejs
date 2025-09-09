@@ -14,17 +14,10 @@
         <div>
           <% playlists.forEach((list) => { %>
             <div>
-              <%= list.name %>
-              <a href="/users/<%= user._id %>/playlists/<%= list._id %>/edit">Edit Playlist</a>
-              <form action="/users/<%= user._id %>/playlists/<%= list._id %>?_method=DELETE" method="POST">
-                <button type="submit">Delete Playlist</button>
-              </form>
-            </div>
-            <ul>
-              <% list.songList.forEach((song) => { %>
-                <li><%= song.title %></li>
-              <% }) %>
-            </ul>          
+              <a href="/users/<%= user._id %>/playlists/<%= list._id %>">
+                <%= list.name %>
+              </a>
+            </div>        
           <% }) %>
         </div>
     <% } else { %>
