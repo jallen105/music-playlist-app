@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const songSchema = mongoose.Schema({
+const songSchema = new mongoose.Schema({
     title: {
         type: String,
         required: true,
@@ -12,7 +12,7 @@ const songSchema = mongoose.Schema({
     genre: String,
 })
 
-const playlistSchema = mongoose.Schema({
+const playlistSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true,

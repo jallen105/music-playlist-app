@@ -21,9 +21,9 @@ router.get('/new', (req, res) => {
 
 router.post('/', async (req, res) => {
     try{
-        res.body.owner = req.session.user._id
+        req.body.owner = req.session.user._id
         await Playlist.create(req.body)
-        res.redirect(`users/${req.session.user._id}/playlists`)
+        res.redirect(`/users/${req.session.user._id}/playlists`)
     } catch (err) {
         console.log(err)
         res.redirect('/')
