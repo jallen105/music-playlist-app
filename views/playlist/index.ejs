@@ -17,6 +17,10 @@
               <a href="/users/<%= user._id %>/playlists/<%= list._id %>">
                 <%= list.name %>
               </a>
+              <a href="/users/<%= user._id %>/playlists/<%= list._id %>/edit">Edit Playlist</a>
+              <form action="/users/<%= user._id %>/playlists/<%= list._id %>?_method=DELETE" method="POST">
+                <button type="submit">Delete Playlist</button>
+              </form>
             </div>        
           <% }) %>
         </div>
