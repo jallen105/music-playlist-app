@@ -11,7 +11,9 @@
         <div>
           <% playlists.forEach((list) => { %>
             <div>
-                <%= list.name %> by <%= list.owner.username %>
+                <a href="/community/<%= list._id %>">
+                    <%= list.name %>
+                </a> by <%= list.owner.username %>
             </div>        
           <% }) %>
         </div>

@@ -12,4 +12,12 @@ router.get('/', async (req, res) => {
     })
 })
 
+router.get('/:playlistId', async (req, res) => {
+    const currentPlaylist = await Playlist.findById(req.params.playlistId).populate('owner')
+
+    res.render('community/show.ejs', {
+        playlist: currentPlaylist
+    })
+})
+
 module.exports = router

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= playlist.name %></title>
+  </head>
+  <body>
+    <%- include('../partials/_navbar.ejs') %>
+    <h1><%= playlist.name %></h1>
+    <div>playlist created by <%= playlist.owner.username %></div>
+        <% if (playlist.songList.length > 0) { %>
+            <% playlist.songList.forEach((song) => { %>
+                <ul>              
+                    <li>Title: <%= song.title %></li>
+                    <li>Artist: <%= song.artist %></li>
+                    <li>Genre: <%= song.genre %></li>              
+                </ul>          
+            <% }) %>
+        <% } else { %>
+            <p>There are no songs in this playlist.</p>
+        <% } %>
+    </div>
+  </body>
+</html>
