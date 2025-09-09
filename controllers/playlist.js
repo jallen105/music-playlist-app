@@ -144,6 +144,26 @@ router.put('/:playlistId', async (req, res) => {
     }
 })
 
+router.put('/:playlistId/song/:songId', async (req, res) => {
+
+    try {
+
+        const currentPlaylist = await Playlist.findById(req.params.playlistId)
+        const currentSong = currentPlaylist.songList.id(req.params.songId)
+
+        currentSong.set(req.body)
+        await currentPlaylist.save()
+
+        res.redirect(`/users/${req.session.user._id}/playlists/${currentPlaylist._id}/edit`)
+
+    } catch (err) {
+
+        console.log(err)
+        res.redirect('/')
+
+    }
+})
+
 
 router.delete('/:playlistId', async (req, res) => {
 
