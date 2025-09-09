@@ -31,4 +31,17 @@ router.post('/', async (req, res) => {
 
 })
 
+router.delete('/:playlistId', async (req, res) => {
+    try {
+        const playlist = await Playlist.findById(req.params.playlistId)
+        if (playlist.owner.equals(req.session.user._id)) {
+            await playlist.deleteOne()
+            res.redirect(`/users/${req.session.user._id}/playlists`)
+        }
+    } catch (err) {
+        console.log(err)
+        res.redirect('/')
+    }
+})
+
 module.exports = router
