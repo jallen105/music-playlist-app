@@ -64,6 +64,26 @@ router.get('/:playlistId/edit', async (req, res) => {
     }
 })
 
+router.get('/:playlistId/song/:songId/edit', async (req, res) => {
+
+    try {
+
+        const currentPlaylist = await Playlist.findById(req.params.playlistId)
+        const currentSong = currentPlaylist.songList.id(req.params.songId)
+
+        res.render('song/edit.ejs', {
+            playlist: currentPlaylist,
+            song: currentSong,
+        })
+
+    } catch (err) {
+
+        console.log(err)
+        res.redirect('/')
+
+    }
+})
+
 router.post('/', async (req, res) => {
 
     try{

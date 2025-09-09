@@ -15,7 +15,7 @@
     </form>
     <% playlist.songList.forEach((song) => { %>
         <div><%= song.title %></div>
-        <a href="/users/<%= user._id %>/playlists/<%= playlist._id %>/song/<%= song._id %>">Edit Song</a>
+        <a href="/users/<%= user._id %>/playlists/<%= playlist._id %>/song/<%= song._id %>/edit">Edit Song</a>
         <form action="/users/<%= user._id %>/playlists/<%= playlist._id %>/song/<%= song._id %>?_method=DELETE" method="POST">
             <button type="submit">Delete Song</button>
         </form>
