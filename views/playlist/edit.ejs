@@ -11,7 +11,11 @@
     <form action="/users/<%= user._id %>/playlists/<%= playlist._id %>?_method=PUT" method="POST">
         <label for="name">Name: </label>
         <input type="text" name="name" id="name" value="<%= playlist.name %>">
-        <button type="submit">Edit <%= playlist.name %></button>
+        <button type="submit">Save Playlist</button>
     </form>
+    <% playlist.songList.forEach((song) => { %>
+        <div><%= song.title %></div>
+    <% }) %>
+    <div><a href="/users/<%= user._id %>/playlists/<%= playlist._id %>/song/new">Add a Song</a></div>
 </body>
 </html>

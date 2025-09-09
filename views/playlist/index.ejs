@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Pantry</title>
+    <title>My Playlists</title>
   </head>
   <body>
     <%- include('../partials/_navbar.ejs') %>
@@ -11,17 +11,22 @@
     <a href="/users/<%= user._id %>/playlists/new">Add New Playlist</a>
     <h3>Your Playlists:</h3>
     <% if (playlists.length > 0) { %>
-        <ul>
+        <div>
           <% playlists.forEach((list) => { %>
-            <li>
+            <div>
               <%= list.name %>
               <a href="/users/<%= user._id %>/playlists/<%= list._id %>/edit">Edit Playlist</a>
               <form action="/users/<%= user._id %>/playlists/<%= list._id %>?_method=DELETE" method="POST">
                 <button type="submit">Delete Playlist</button>
               </form>
-            </li>          
+            </div>
+            <ul>
+              <% list.songList.forEach((song) => { %>
+                <li><%= song.title %></li>
+              <% }) %>
+            </ul>          
           <% }) %>
-        </ul>
+        </div>
     <% } else { %>
       <p>There are no playlists.</p>
     <% } %>

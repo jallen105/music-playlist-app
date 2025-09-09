@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Song</title>
+</head>
+<body>
+    <%- include('../partials/_navbar.ejs') %>
+    <h1>Add New Song </h1>
+    <form action="/users/<%= user._id %>/playlists/<%= playlist._id %>/song" method="POST">
+        <label for="title">Title: </label>
+        <input type="text" name="title" id="title">
+        <label for="artist">Artist: </label>
+        <input type="text" name="artist" id="artist">
+        <label for="genre">Genre: </label>
+        <input type="text" name="genre" id="genre">
+        <button type="submit">Add New Song</button>
+    </form>
+</body>
+</html>
