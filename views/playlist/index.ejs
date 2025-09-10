@@ -18,7 +18,7 @@
               <a href="/users/<%= user._id %>/playlists/<%= list._id %>" class="playlist">
                 <%= list.name %>
               </a>
-              <section>
+              <section class="options">
                 <a href="/users/<%= user._id %>/playlists/<%= list._id %>/edit" class="edit-btn">Edit Playlist</a>
                 <form action="/users/<%= user._id %>/playlists/<%= list._id %>?_method=DELETE" method="POST">
                   <button type="submit" class="delete-btn">Delete Playlist</button>
@@ -35,6 +35,6 @@
       </div>
     </div>
 
-
+    <%- include('../partials/_footer.ejs') %>
   </body>
 </html>

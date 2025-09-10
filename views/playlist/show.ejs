@@ -8,28 +8,28 @@
   </head>
   <body>
     <%- include('../partials/_navbar.ejs') %>
-    <h1><%= playlist.name %></h1>
-    
-        <div>
-            <div>
-              <a href="/users/<%= user._id %>/playlists/<%= playlist._id %>/edit">Edit Playlist</a>
-              <form action="/users/<%= user._id %>/playlists/<%= playlist._id %>?_method=DELETE" method="POST">
-                <button type="submit">Delete Playlist</button>
-              </form>
-            </div>
 
-        <% if (playlist.songList.length > 0) { %>
-            <ul>
-              <% playlist.songList.forEach((song) => { %>
-                <li>Title: <%= song.title %></li>
-                <li>Artist: <%= song.artist %></li>
-                <li>Genre: <%= song.genre %></li>
-              <% }) %>
-            </ul>          
-        
-        <% } else { %>
-            <p>There are no songs in this playlist.</p>
-        <% } %>
+    <div class="playlist-content">
+      <h1><%= playlist.name %></h1>
+      <section class="options">
+        <a href="/users/<%= user._id %>/playlists/<%= playlist._id %>/edit" class="edit-btn">Edit Playlist</a>
+        <form action="/users/<%= user._id %>/playlists/<%= playlist._id %>?_method=DELETE" method="POST" class="delete-btn">
+          <button type="submit">Delete Playlist</button>
+        </form>
+      </section>
+
+      <% if (playlist.songList.length > 0) { %>   
+        <% playlist.songList.forEach((song) => { %>
+          <ul class="song">
+            <li>Song Title: <%= song.title %></li>
+            <li>Artist: <%= song.artist %></li>
+            <li>Genre: <%= song.genre %></li>
+          </ul>     
+        <% }) %>      
+      <% } else { %>
+        <p>There are no songs in this playlist.</p>
+      <% } %>
     </div>
+    <%- include('../partials/_footer.ejs') %>
   </body>
 </html>

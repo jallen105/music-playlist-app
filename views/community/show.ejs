@@ -8,40 +8,47 @@
   </head>
   <body>
     <%- include('../partials/_navbar.ejs') %>
-    <h1><%= playlist.name %></h1>
-    <div>playlist created by <%= playlist.owner.username %></div>
-        <% if (playlist.songList.length > 0) { %>
-            <% playlist.songList.forEach((song) => { %>
-                <ul>              
-                    <li>Title: <%= song.title %></li>
-                    <li>Artist: <%= song.artist %></li>
-                    <li>Genre: <%= song.genre %></li>              
-                </ul>          
-            <% }) %>
-        <% } else { %>
-            <p>There are no songs in this playlist.</p>
-        <% } %>
-    </div>
 
-    <p>Favorited: <%= playlist.favoredBy.length %></p>
-    <% if (user) { %>
-      <% if (favored) { %>
-        <form
-          action="/community/<%= playlist._id %>/favored-by/<%= user._id %>?_method=DELETE"
-          method="POST"
-        >
-          <button type="submit">Unfavorite Playlist</button>
-        </form>
+    <div class="playlist-content">
+      <h1><%= playlist.name %></h1>
+      <div>playlist created by <%= playlist.owner.username %></div>
+
+      <div class="favorite">
+        <p>Favorited: <%= playlist.favoredBy.length %></p>
+
+        <% if (user) { %>
+          <% if (favored) { %>
+            <form
+              action="/community/<%= playlist._id %>/favored-by/<%= user._id %>?_method=DELETE"
+              method="POST"
+            >
+              <button type="submit">Unfavorite Playlist</button>
+            </form>
+          <% } else { %>
+            <form
+              action="/community/<%= playlist._id %>/favored-by/<%= user._id %>"
+              method="POST"
+            >
+              <button type="submit">Favorite Playlist</button>
+            </form>
+          <% } %>
+        <% } else { %>
+          <p>Sign in to favorite.</p>
+        <% } %>
+      </div>
+
+      <% if (playlist.songList.length > 0) { %>
+        <% playlist.songList.forEach((song) => { %>
+            <ul class="song">              
+                <li>Title: <%= song.title %></li>
+                <li>Artist: <%= song.artist %></li>
+                <li>Genre: <%= song.genre %></li>              
+            </ul>          
+        <% }) %>
       <% } else { %>
-        <form
-          action="/community/<%= playlist._id %>/favored-by/<%= user._id %>"
-          method="POST"
-        >
-          <button type="submit">Favorite Playlist</button>
-        </form>
+        <p>There are no songs in this playlist.</p>
       <% } %>
-    <% } else { %>
-      <p>Sign in to favorite.</p>
-    <% } %>
+    </div>
+    <%- include('../partials/_footer.ejs') %>
   </body>
 </html>
