@@ -1,12 +1,22 @@
 <nav>
-    <a href="/">Home</a>
-    <% if (user) { %>
-        <a href="/users/<%= user._id %>/playlists">View my Playlists</a>
-        <a href="/community">Explore Our Community</a>
-        <a href="/auth/sign-out">Sign Out</a>
-    <% } else { %>
-        <a href="/auth/sign-in">Sign In</a>
-        <a href="/community">Explore Our Community</a>
-        <a href="/auth/sign-up">Sign Up</a>
-    <% } %>
+    
+    <div>
+        <a href="/">Home</a>
+        <% if (user) { %>
+            <a href="/users/<%= user._id %>/playlists">View my Playlists</a>
+            <a href="/community">Explore Our Community</a>
+        <% } else { %>
+            <a href="/community">Explore Our Community</a>
+        <% } %>
+    </div>
+
+    <div>
+        <% if (user) { %>
+            <a href="/auth/sign-out">Sign Out</a>
+        <% } else { %>
+            <a href="/auth/sign-in">Sign In</a>        
+            <a href="/auth/sign-up">Sign Up</a>
+        <% } %>
+    </div>
+
 </nav>

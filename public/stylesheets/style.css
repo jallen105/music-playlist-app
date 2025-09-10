@@ -1,10 +1,54 @@
-body {
+body, html {
     margin: 0;
     padding: 0;
     background-color: #D9D9D9;
     color: #284B63;
+    min-height: 100vh;
 }
 
-a, a:visited {
-    color: #B8336A;
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+a, a:visited, button {
+    padding: 5px;
+    color: #7692FF;
+    text-decoration: none;
+    background-color: #1C3041;
+    border: #4A7C59 2px solid;
+    border-radius: 10px;
+}
+
+a:hover, button:hover {
+    background-color: #7692FF;
+    color: #1C3041;
+}
+
+nav {
+    padding: 15px 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #89043D;
+    height: 2.5%;
+    
+}
+
+.content {
+    display: flex;
+    margin: auto 0;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+footer {
+    display: flex;
+    align-items: center;
+    margin-top: auto;
+    padding-left: 10px;
+    background-color: #89043D;
+    color: #D9D9D9;
+    height: 5%;
 }

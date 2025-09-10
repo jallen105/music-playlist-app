@@ -8,17 +8,18 @@
 </head>
 <body>
   <%- include('./partials/_navbar.ejs') %>
-  <% if (user) { %>
-    <h1>Welcome to the app, <%= user.username %>!</h1>
-    <p>
-      <a href="/auth/sign-out">Sign out</a>
-    </p>
-  <% } else { %>
-    <h1>Welcome to the app, guest.</h1>
-    <p>
-      <a href="/auth/sign-up">Sign up</a> or
-      <a href="/auth/sign-in">Sign in</a>.
-    </p>
-  <% } %>
+
+  <div class="content">
+    <% if (user) { %>
+      <h1>Welcome to Music Share, <%= user.username %>!</h1>
+    <% } else { %>
+      <h1>Welcome to Music Share</h1>
+    <% } %>
+    <section>
+      Make playlists and share them with the community!
+    </section>
+  </div>
+
+  <%- include('./partials/_footer.ejs') %>
 </body>
 </html>
