@@ -1,9 +1,12 @@
+@import url(https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap);
+
 body, html {
     margin: 0;
     padding: 0;
     background-color: #D9D9D9;
     color: #284B63;
     min-height: 100vh;
+    font-family: 'Lexend', sans-serif;
 }
 
 body {
@@ -25,6 +28,11 @@ a:hover, button:hover {
     color: #1C3041;
 }
 
+a.playlist{
+    border: 0;
+    background-color: transparent;
+}
+
 nav {
     padding: 15px 5px;
     display: flex;
@@ -35,12 +43,43 @@ nav {
     
 }
 
-.content {
+button {
+    font-family: 'Lexend', sans-serif;
+}
+
+.main {
     display: flex;
     margin: auto 0;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.content-community {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.content div {
+    margin: 5px 0;
+    display: flex;
+    justify-content: space-between;
+    min-width: 20vw;
+}
+
+.content section {
+    display: flex;
+}
+
+.edit-btn, .new-btn {
+    font-size: small;
 }
 
 footer {

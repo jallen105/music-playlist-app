@@ -8,26 +8,33 @@
   </head>
   <body>
     <%- include('../partials/_navbar.ejs') %>
-    <h1>Welcome to your playlists</h1>
-    <a href="/users/<%= user._id %>/playlists/new">Add New Playlist</a>
-    <h3>Your Playlists:</h3>
-    <% if (playlists.length > 0) { %>
-        <div>
+    <div class="content">
+      <h1>Welcome to your playlists</h1>
+      
+      <h3>Your Playlists:</h3>
+      <% if (playlists.length > 0) { %>
           <% playlists.forEach((list) => { %>
             <div>
-              <a href="/users/<%= user._id %>/playlists/<%= list._id %>">
+              <a href="/users/<%= user._id %>/playlists/<%= list._id %>" class="playlist">
                 <%= list.name %>
               </a>
-              <a href="/users/<%= user._id %>/playlists/<%= list._id %>/edit">Edit Playlist</a>
-              <form action="/users/<%= user._id %>/playlists/<%= list._id %>?_method=DELETE" method="POST">
-                <button type="submit">Delete Playlist</button>
-              </form>
+              <section>
+                <a href="/users/<%= user._id %>/playlists/<%= list._id %>/edit" class="edit-btn">Edit Playlist</a>
+                <form action="/users/<%= user._id %>/playlists/<%= list._id %>?_method=DELETE" method="POST">
+                  <button type="submit" class="delete-btn">Delete Playlist</button>
+                </form>
+              </section>
+
             </div>        
           <% }) %>
-        </div>
-    <% } else { %>
-      <p>There are no playlists.</p>
-    <% } %>
+      <% } else { %>
+        <p>There are no playlists.</p>
+      <% } %>
+      <div>
+        <a href="/users/<%= user._id %>/playlists/new" class="new-btn">Add New Playlist</a>
+      </div>
+    </div>
+
 
   </body>
 </html>
