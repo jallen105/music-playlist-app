@@ -47,12 +47,54 @@ button {
     font-family: 'Lexend', sans-serif;
 }
 
+form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.form-column {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
 .main {
     display: flex;
     margin: auto 0;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+.form-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.form-field-sign-up {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-width: 18%;
+}
+
+.form-field{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-width: 15%;
 }
 
 .content {
@@ -77,6 +119,7 @@ button {
 section.options {
     display: flex;
     justify-content: space-around;
+    align-items: center;
 }
 
 .edit-btn {
@@ -96,6 +139,12 @@ section.options {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     width: 50%;
+}
+
+.song-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-width: 20%;
 }
 
 .favorite {

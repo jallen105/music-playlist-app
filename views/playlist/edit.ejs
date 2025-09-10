@@ -8,20 +8,31 @@
 </head>
 <body>
     <%- include('../partials/_navbar.ejs') %>
-    <h1>Edit <%= playlist.name %></h1>
-    <a href="/users/<%= user._id %>/playlists/<%= playlist._id %>">Back to Playlist</a>
-    <form action="/users/<%= user._id %>/playlists/<%= playlist._id %>?_method=PUT" method="POST">
-        <label for="name">Name: </label>
-        <input type="text" name="name" id="name" value="<%= playlist.name %>">
-        <button type="submit">Change Playlist Name</button>
-    </form>
-    <% playlist.songList.forEach((song) => { %>
-        <div><%= song.title %></div>
-        <a href="/users/<%= user._id %>/playlists/<%= playlist._id %>/song/<%= song._id %>/edit">Edit Song</a>
-        <form action="/users/<%= user._id %>/playlists/<%= playlist._id %>/song/<%= song._id %>?_method=DELETE" method="POST">
-            <button type="submit">Delete Song</button>
+    <div class="form-header">
+        <h1>Edit <%= playlist.name %></h1>
+        <a href="/users/<%= user._id %>/playlists/<%= playlist._id %>">Back to Playlist</a>
+    </div>
+    <div class="form-content">
+        <form action="/users/<%= user._id %>/playlists/<%= playlist._id %>?_method=PUT" method="POST">
+            <label for="name">Name: </label>
+            <input type="text" name="name" id="name" value="<%= playlist.name %>">
+            <button type="submit">Change Playlist Name</button>
         </form>
-    <% }) %>
-    <div><a href="/users/<%= user._id %>/playlists/<%= playlist._id %>/song/new">Add a Song</a></div>
+        <% playlist.songList.forEach((song) => { %>
+            <section class="song-form">
+                <div><%= song.title %></div>
+                <section class="options">
+                    <div><a href="/users/<%= user._id %>/playlists/<%= playlist._id %>/song/<%= song._id %>/edit" class="edit-btn">Edit Song</a></div>
+                    <form action="/users/<%= user._id %>/playlists/<%= playlist._id %>/song/<%= song._id %>?_method=DELETE" method="POST" class="delete-btn">
+                        <button type="submit">Delete Song</button>
+                    </form>
+                </section>
+
+            </section>
+
+        <% }) %>
+        <div><a href="/users/<%= user._id %>/playlists/<%= playlist._id %>/song/new" class="new-btn">Add a Song</a></div>
+    </div>
+    <%- include('../partials/_footer.ejs') %>
 </body>
 </html>
