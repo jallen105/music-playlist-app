@@ -110,7 +110,7 @@ router.delete('/:playlistId', async (req, res) => {
 
         if (currentPlaylist.owner.equals(req.session.user._id)) {
             await currentPlaylist.deleteOne()
-            res.redirect(`/users/${req.session.user._id}/playlists/${currentPlaylist._id}`)
+            res.redirect(`/users/${req.session.user._id}/playlists/`)
         } else {
             res.send('You don\'t have permission to do that.')
         }

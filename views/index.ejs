@@ -11,13 +11,19 @@
 
   <div class="main">
     <% if (user) { %>
+
       <h1>Welcome to Music Share, <%= user.username %>!</h1>
+
     <% } else { %>
+
       <h1>Welcome to Music Share</h1>
+
     <% } %>
+
     <section>
       Make playlists and share them with the community!
     </section>
+    
   </div>
 
   <%- include('./partials/_footer.ejs') %>

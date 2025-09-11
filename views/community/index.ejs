@@ -8,8 +8,11 @@
   </head>
   <body>
     <%- include('../partials/_navbar.ejs') %>
+
       <div class="content-community">
+
         <h1>Community Playlists</h1>
+
         <% playlists.forEach((list) => { %>
           <div>
               <a href="/community/<%= list._id %>" class="playlist">
@@ -17,7 +20,9 @@
               </a> by <%= list.owner.username %>
           </div>        
         <% }) %>
+
       </div>
-  <%- include('../partials/_footer.ejs') %>
+
+    <%- include('../partials/_footer.ejs') %>
   </body>
 </html>

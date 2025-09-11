@@ -10,15 +10,19 @@
   <%- include('../partials/_navbar.ejs') %>
   
   <h1 class="form-header">Create a new account!</h1>
+
   <form action="/auth/sign-up" method="POST" class="form-column">
+
     <div class="form-field-sign-up">
       <label for="username">Username:</label>
       <input type="text" name="username" id="username" required />
     </div>
+
     <div class="form-field-sign-up">
       <label for="password">Password:</label>
       <input type="password" name="password" id="password" required />
     </div>
+
     <div class="form-field-sign-up">
       <label for="confirmPassword">Confirm Password:</label>
       <input 
@@ -32,6 +36,7 @@
 
     <button type="submit">Sign up</button>
   </form>
+  
   <%- include('../partials/_footer.ejs') %>
 </body>
 </html>

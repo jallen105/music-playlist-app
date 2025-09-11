@@ -12,6 +12,7 @@ body, html {
 body {
     display: flex;
     flex-direction: column;
+    font-size: 18px;
 }
 
 a, a:visited, button {
@@ -43,8 +44,9 @@ nav {
     
 }
 
-button {
+button, input {
     font-family: 'Lexend', sans-serif;
+    font-size: 18px;
 }
 
 form {
@@ -87,20 +89,21 @@ form {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    min-width: 18%;
+    min-width: 23%;
 }
 
 .form-field{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    min-width: 15%;
+    min-width: 18%;
 }
 
 .content {
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 13px;
 }
 
 .content-community {
@@ -109,11 +112,10 @@ form {
     align-items: center;
 }
 
-.content div {
-    margin: 5px 0;
+.playlist-line {
     display: flex;
     justify-content: space-between;
-    min-width: 20vw;
+    min-width: 25vw;
 }
 
 section.options {
@@ -154,9 +156,9 @@ section.options {
     gap: 15px;
 }
 
-.edit-btn, .new-btn {
+/* .edit-btn, .new-btn {
     font-size: small;
-}
+} */
 
 footer {
     display: flex;

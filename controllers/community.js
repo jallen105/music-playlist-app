@@ -5,11 +5,13 @@ const Playlist = require('../models/playlist.js')
 const session = require('express-session')
 
 router.get('/', async (req, res) => {
+
     const allPlaylists = await Playlist.find({}).populate('owner')
 
     res.render('community/index.ejs', {
         playlists: allPlaylists,
     })
+
 })
 
 router.get('/:playlistId', async (req, res) => {
@@ -30,8 +32,6 @@ router.get('/:playlistId', async (req, res) => {
         favored: false,
     })  
     }
-
-
 
 })
 

@@ -8,16 +8,21 @@
 </head>
 <body>
     <%- include('../partials/_navbar.ejs') %>
+
     <h1 class="form-header">Edit <%= song.title %></h1>
+
     <form action="/users/<%= user._id %>/playlists/<%= playlist._id %>/song/<%= song._id %>?_method=PUT" method="POST" class="form-column">
+
         <div class="form-field">
             <label for="title">Title: </label>
             <input type="text" name="title" id="title" value="<%= song.title %>">
         </div>
+
         <div class="form-field">
            <label for="artist">Artist: </label>
             <input type="text" name="artist" id="artist" value="<%= song.artist %>"> 
         </div>
+
         <div class="form-field">
             <label for="genre">Genre: </label>
             <input type="text" name="genre" id="genre" value="<%= song.genre %>">
@@ -25,6 +30,7 @@
 
         <button type="submit">Save Changes</button>
     </form>
+    
     <%- include('../partials/_footer.ejs') %>
 </body>
 </html>

@@ -10,11 +10,14 @@
   <%- include('../partials/_navbar.ejs') %>
   
   <h1 class="form-header">Sign in</h1>
+
   <form action="/auth/sign-in" method="POST" class="form-column">
+
     <div class="form-field">
       <label for="username">Username:</label>
       <input type="text" name="username" id="username" required />
     </div>
+
     <div class="form-field">
       <label for="password">Password:</label>
       <input type="password" name="password" id="password" required />
@@ -23,6 +26,7 @@
 
     <button type="submit">Sign in</button>
   </form>
+  
   <%- include('../partials/_footer.ejs') %>
 </body>
 </html>

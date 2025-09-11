@@ -28,20 +28,25 @@ app.use(express.urlencoded({ extended: true }))
 app.use(methodOverride('_method'))
 app.use(morgan('dev'))
 app.use(express.static(path.join(__dirname, 'public')))
+
 app.use(
+
     session({
         secret: process.env.SESSION_SECRET,
         resave: false,
         saveUninitialized: true,
     })
+
 )
 
 app.use(passUserToView)
 
 app.get('/', (req, res) => {
+    
     res.render('index.ejs', {
         user: req.session.user,
     })
+
 })
 
 
