@@ -16,7 +16,7 @@ const communityController = require('./controllers/community.js')
 const isSignedIn = require('./middleware/is-signed-in.js')
 const passUserToView = require('./middleware/pass-user-to-view.js')
 
-const port = process.env.PORT
+const port = process.env.PORT || '3000'
 
 mongoose.connect(process.env.MONGODB_URI)
 
