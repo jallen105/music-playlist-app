@@ -50,11 +50,26 @@ router.post('/', async (req, res) => {
 
         const currentPlaylist = await Playlist.findById(req.params.playlistId)
 
-        currentPlaylist.songList.push(req.body)
-        await currentPlaylist.save()
+        if (currentPlaylist.owner.equals(req.session.user._id)) {
 
-        res.redirect(`/users/${req.session.user._id}/playlists/${currentPlaylist._id}/edit`)
+            if (req.body.title.trim() !== '' && req.body.artist.trim() !== '') {
 
+                currentPlaylist.songList.push(req.body)
+                await currentPlaylist.save()
+
+                res.redirect(`/users/${req.session.user._id}/playlists/${currentPlaylist._id}/edit`)  
+
+            } else {
+
+                res.send('Please enter a valid title or artist name.')
+
+            }
+
+        } else {
+
+            res.send('You don\'t have permission to do that.')
+
+        }
     } catch (err) {
 
         console.log(err)
@@ -70,11 +85,26 @@ router.put('/:songId', async (req, res) => {
         const currentPlaylist = await Playlist.findById(req.params.playlistId)
         const currentSong = currentPlaylist.songList.id(req.params.songId)
 
-        currentSong.set(req.body)
-        await currentPlaylist.save()
+        if (currentPlaylist.owner.equals(req.session.user._id)) {
 
-        res.redirect(`/users/${req.session.user._id}/playlists/${currentPlaylist._id}/edit`)
+            if (req.body.title.trim() !== '' && req.body.artist.trim() !== '') {
 
+                currentSong.set(req.body)
+                await currentPlaylist.save()
+
+                res.redirect(`/users/${req.session.user._id}/playlists/${currentPlaylist._id}/edit`)  
+
+            } else {
+
+                res.send('Please enter a valid title or artist name.')
+
+            }
+
+        } else {
+
+            res.send('You don\'t have permission to do that.')
+
+        }
     } catch (err) {
 
         console.log(err)

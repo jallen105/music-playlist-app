@@ -65,10 +65,17 @@ router.post('/', async (req, res) => {
 
     try{
 
-        req.body.owner = req.session.user._id
-        await Playlist.create(req.body)
+        if (req.body.name.trim() !== '') {
 
-        res.redirect(`/users/${req.session.user._id}/playlists`)
+            req.body.owner = req.session.user._id
+            await Playlist.create(req.body)
+            res.redirect(`/users/${req.session.user._id}/playlists`)     
+
+        } else {
+
+            res.send('Please enter a valid playlist name.')
+
+        }
 
     } catch (err) {
 
@@ -85,8 +92,16 @@ router.put('/:playlistId', async (req, res) => {
 
         if (currentPlaylist.owner.equals(req.session.user._id)) {
 
-            await currentPlaylist.updateOne(req.body)
-            res.redirect(`/users/${req.session.user._id}/playlists/${currentPlaylist._id}`)
+            if (req.body.name.trim() !== '') {
+
+                await currentPlaylist.updateOne(req.body)
+                res.redirect(`/users/${req.session.user._id}/playlists/${currentPlaylist._id}`)  
+
+            } else {
+
+                res.send('Please enter a valid playlist name.')
+
+            }
 
         } else {
 
