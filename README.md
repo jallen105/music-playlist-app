@@ -2,7 +2,7 @@
 
 ![Music Share](./assets/music-share.png)
 
-Link to app here  
+Check out the app [here](https://music-playlist-share-71fd7ec0314e.herokuapp.com/).  
 [Planning Materials](https://trello.com/b/XGdJ3INt/music-app)
 
 ## Description
